@@ -1,34 +1,40 @@
-array_1=["pen","paper","book","bottle"];
-random_no = Math.floor((Math.random()*array_1.length)+1);
-Element_of_array = array_1[random_no];
-console.log(Element_of_array);
-
-
-timer_counter = "";
-timer_check = "";
-drawn_sketch = "";
-answer_holder = "";
-score = "";
-
 function setup(){
     canvas = createCanvas(200, 200);
     canvas.center();
     background("white");
+    canvas.mouseReleased(classifyCanvas);
+    synth = window.speechSynthesis;
 }
 
 function clearCanvas(){
     background("white");
 }
 
-function draw(){
-    strokeWieght(13);
-    stroke(0);
-    if (mouseIsPressed) {
-        line(pMouseX, pMouseY, mouseX, mouseY);
-    }
-    check_skecth()
+function preload(){
+    classifier = ml5.imageClassifier('DoodleNet');
 }
-function check_skecth(){
-    timer_counter++;
-    document.getElementById('Timer').innerHTML = 'Timer:' + Timer_counter;
+
+function draw(){
+    strokeWeight(13);
+    stroke("#74b6be");
+    if(mouseIsPressed){
+        line(pmouseX, pmouseY, mouseX, mouseY);
+    }
+}
+
+function classifyCanvas(){
+    classifier.classify(canvas, gotResult);
+}
+
+function gotResult(error, results){
+    if(error){
+        console.error(error);
+    }
+    console.log(results);
+    document.getElementById('label').innerHTML = 'label : ' + results[0].label;
+
+    document.getElementById('confidence').innerHTML = 'confidence : ' + Math.round(results[0].confidence * 100) + '%';
+
+    utterThis = new SpeechSynthesisUtterance(results[0].label);
+    synth.speak(utterThis);
 }

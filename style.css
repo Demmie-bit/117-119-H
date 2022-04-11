@@ -1,37 +1,17 @@
 body{
-    background-color: #eee3dd;
+    background-color:#faf1d6 ;
 }
-h1, h2, span, p{
-    font-size: 20px;
-    color: #d89279;
+h1{
+    color: #74b6be;
+    background-color:#b6e3e9 ;
+    padding-top: 5px;
     font-family: 'Comfortaa', cursive;
 }
-button{
-    background-color:#becca2 ;
-    color:white;
-    font-family: 'Comfortaa', cursive;
-}
-#Score{
-    font-size: 30px;
-    float: left;
-    margin-left: 30px;
-    font-family: 'Comfortaa', cursive;
-}
-#Timer{
-    font-size: 30px;
+
+#show_sketch{
     float: right;
     margin-right: 30px;
     font-family: 'Comfortaa', cursive;
-}
-#TB_Drawn{
-    background-color: #d89279;
-    color: white;
-    margin-left: 200px;
-    margin-right: 200px;
-    font-family: 'Comfortaa', cursive;
-}
-#header{
-    font-size: 50px;
 }
 canvas{
     border: 5px solid white;
@@ -44,5 +24,20 @@ canvas{
 @keyframes hello{
 
     from {box-shadow: 1px 1px 38px #e7a6a3;}
-    to {box-shadow: 1px 1px 38px #a1ad89;}
+    to {box-shadow: 1px 1px 38px #74b6be;}
+}
+
+p{
+    padding-top: 10px;
+    font-size: 25px;
+    color:#74b6be;
+    font-family: 'Comfortaa', cursive;
+}
+#clearCanvas{
+    background-color:#e7a6a3 ;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+}
+#Score{
+    margin-right: 3;
 }
